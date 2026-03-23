@@ -31,6 +31,7 @@ jobs:
           repository: briccheng/briccheng.github.io
           token: ${{ secrets.PAGES_DEPLOY_TOKEN }}
           path: deploy-repo
+          ref: master # default branch
 
       - name: Sync build output
         run: |
@@ -51,4 +52,4 @@ jobs:
             exit 0
           fi
           git commit -m "Deploy portfolio from source repo"
-          git push origin main
+          git push origin master
