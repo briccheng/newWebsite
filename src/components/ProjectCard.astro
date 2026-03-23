@@ -1,0 +1,63 @@
+---
+import type { ProjectItem } from "../data/site";
+
+interface Props {
+  project: ProjectItem;
+}
+
+const { project } = Astro.props;
+---
+
+<a class="project-card" href={project.href} target="_blank" rel="noreferrer" aria-label={`Open ${project.title}`}>
+  <img src={project.imageSrc} alt={project.imageAlt} loading="lazy" />
+  <div class="card-copy">
+    <h3>{project.title}</h3>
+    <p>{project.description}</p>
+    <span>View project</span>
+  </div>
+</a>
+
+<style>
+  .project-card {
+    display: grid;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(11, 18, 32, 0.08);
+    background: rgba(255, 255, 255, 0.78);
+    box-shadow: 0 20px 45px rgba(11, 18, 32, 0.08);
+    transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+  }
+
+  .project-card:hover,
+  .project-card:focus-visible {
+    transform: translateY(-6px);
+    border-color: rgba(180, 82, 9, 0.28);
+    box-shadow: 0 28px 55px rgba(11, 18, 32, 0.12);
+    outline: none;
+  }
+
+  .project-card img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+  }
+
+  .card-copy {
+    display: grid;
+    gap: 0.9rem;
+    padding: 1.5rem;
+  }
+
+  .card-copy h3 {
+    font-size: 1.25rem;
+  }
+
+  .card-copy p {
+    color: var(--muted);
+  }
+
+  .card-copy span {
+    color: var(--brand);
+    font-weight: 600;
+  }
+</style>

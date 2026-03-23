@@ -1,0 +1,88 @@
+---
+type SocialLinks = {
+  github: string;
+  linkedin: string;
+  resume?: string;
+  email?: string;
+};
+
+interface Props {
+  links: SocialLinks;
+  includeResume?: boolean;
+  includeEmail?: boolean;
+}
+
+const { links, includeResume = false, includeEmail = false } = Astro.props;
+---
+
+<div class="social-row">
+  <a class="icon-link" href={links.github} target="_blank" rel="noreferrer" aria-label="GitHub profile">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M12 2C6.48 2 2 6.58 2 12.23c0 4.52 2.87 8.35 6.84 9.7.5.1.68-.22.68-.49 0-.24-.01-1.04-.01-1.88-2.78.62-3.37-1.21-3.37-1.21-.45-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.64-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.72 0 0 .84-.28 2.75 1.05A9.3 9.3 0 0 1 12 6.92c.85 0 1.7.12 2.5.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.46.1 2.72.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.31.68.93.68 1.88 0 1.35-.01 2.44-.01 2.77 0 .27.18.59.69.49A10.27 10.27 0 0 0 22 12.23C22 6.58 17.52 2 12 2Z"
+      />
+    </svg>
+  </a>
+  <a class="icon-link" href={links.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn profile">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M6.94 8.5a1.54 1.54 0 1 1 0-3.08 1.54 1.54 0 0 1 0 3.08ZM8.3 10.14H5.6V19h2.7v-8.86Zm4.3 0h-2.68V19h2.68v-4.65c0-2.59 3.35-2.8 3.35 0V19h2.69v-5.57c0-4.33-4.86-4.17-6.04-2.04v-1.25Z"
+      />
+    </svg>
+  </a>
+  {includeResume && links.resume && (
+    <a class="icon-link" href={links.resume} target="_blank" rel="noreferrer" aria-label="Resume">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          fill="currentColor"
+          d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Zm7 1.5V9h4.5L14 4.5ZM9 12h6v1.5H9V12Zm0 3h6v1.5H9V15Zm0-6h3v1.5H9V9Z"
+        />
+      </svg>
+    </a>
+  )}
+  {includeEmail && links.email && (
+    <a class="icon-link" href={links.email} aria-label="Send email">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          fill="currentColor"
+          d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm0 2v.2l8 5.1 8-5.1V7H4Zm16 10V9.56l-7.46 4.76a1 1 0 0 1-1.08 0L4 9.56V17h16Z"
+        />
+      </svg>
+    </a>
+  )}
+</div>
+
+<style>
+  .social-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+  }
+
+  .icon-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 999px;
+    background: rgba(11, 18, 32, 0.08);
+    color: var(--surface-strong);
+    transition: transform 180ms ease, background 180ms ease, color 180ms ease;
+  }
+
+  .icon-link:hover,
+  .icon-link:focus-visible {
+    transform: translateY(-2px);
+    background: var(--brand);
+    color: white;
+    outline: none;
+  }
+
+  .icon-link svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+</style>
