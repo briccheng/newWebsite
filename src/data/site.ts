@@ -53,7 +53,7 @@ export const socialLinks = {
 };
 
 export const aboutText =
-  "My name is Brian Cheng, and I'm currently pursuing a Master's degree in Computer Science at the University of Texas at Austin. I have 2 years of experience as a Software Test Engineer at Visa, developing automation tools using JavaScript, TypeScript, REST APIs, Java, and Selenium to improve testing efficiency and reduce manual processes. I also have experience in software development through internships and projects ranging from backend to full-stack applications.";
+  "I started my career in software testing through internships and my role at Visa, where I developed scalable automation tools and testing frameworks for payment systems. This experience gave me a strong foundation in quality assurance and its role across the entire software development lifecycle. I am currently working on building new payment solutions at Visa, and I also bring experience in backend and full-stack development from both projects and internships.";
 
 export const experiences: ExperienceItem[] = [
   {
